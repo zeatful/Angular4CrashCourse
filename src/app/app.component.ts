@@ -8,6 +8,12 @@ import { FavoriteChangedEventArgs } from "./favorite/favorite.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  tweet = {
+    body: 'Here is the body of a tweet...',
+    isLiked: true,
+    likesCount: 10
+  }
+
   title = 'Angular app';
   post = {
     title: 'Title',
