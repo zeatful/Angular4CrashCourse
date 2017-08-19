@@ -8,6 +8,7 @@ import { FavoriteChangedEventArgs } from "./favorite/favorite.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  viewMode = 'other';
   courses = [1, 2];
 
   tweet = {
