@@ -1,5 +1,4 @@
-<!--<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>-->
-<!--
+<!--<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
 <bootstrap-panel>
         <ng-container class="heading">Heading Custom</ng-container>
         <div class="body">
@@ -7,5 +6,18 @@
             <p>Some content here..</p>
         </div>
 </bootstrap-panel>
--->
 <app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></app-like>
+-->
+
+<!-- 
+    + Directives
+        - Structural: modify the structure of the DOM
+        - Attribue: modify the attributes of DOM elements
+-->
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
+<ng-template #coursesList>
+    List of courses
+</ng-template>
+<ng-template #noCourses>
+        No courses yet
+</ng-template>
