@@ -1,16 +1,33 @@
+import { SummaryPipe } from './course/summary.pipe';
+import { AuthorService } from './author/author.service';
+import { CourseService } from './course/course.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { CourseComponent } from './course/course.component';
+import { AuthorComponent } from './author/author.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { PanelComponent } from './panel/panel.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CourseComponent,
+    AuthorComponent,
+    SummaryPipe,
+    FavoriteComponent,
+    PanelComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CourseService,
+    AuthorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
