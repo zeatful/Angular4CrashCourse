@@ -6,16 +6,17 @@
             <p>Some content here..</p>
         </div>
 </bootstrap-panel>
+-->
+<!--
 <app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked"></app-like>
 -->
 
-<!-- 
-    + Directives
+<!--    + Directives
         - Structural: modify the structure of the DOM
         - Attribue: modify the attributes of DOM elements
 -->
 
-<!-- ng if
+<!--
 <div *ngIf="courses.length > 0; then coursesList else noCourses"></div>
 <ng-template #coursesList>
     List of courses
@@ -26,13 +27,23 @@
 -->
 
 <!-- using class binding to set active -->
+<!--
 <ul class="nav nav-pills">
     <li [class.active]="viewMode == 'map'"><a (click)="viewMode = 'map'">Map View</a></li>
     <li [class.active]="viewMode == 'list'"><a (click)="viewMode = 'list'">List View</a></li>
 </ul>
+-->
+
 <!-- using ngswitch to render based on many values -->
-<div [ngSwitch]="viewMode">
+<!-- <div [ngSwitch]="viewMode">
     <div *ngSwitchCase="'map'">Map View Content</div>
     <div *ngSwitchCase="'list'">List View Content</div>
     <div *ngSwitchDefault>Otherwise</div>
-</div>
+</div> -->
+
+<!-- ngForOf (ngFor directive) : index is an exported value we can use -->
+<ul>
+    <li *ngFor="let course of courses; even as isEven">
+        {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+    </li>
+</ul>
