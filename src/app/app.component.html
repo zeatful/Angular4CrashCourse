@@ -1,3 +1,10 @@
+
+<!-- safe traversal operation using question mark after potentially 
+    null object -->
+<span>{{ task.assignee?.name }}</span>
+
+<!-- <span *ngIf="task.assignee">{{ task.assignee.name }}</span> -->
+
 <!--<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
 <bootstrap-panel>
         <ng-container class="heading">Heading Custom</ng-container>
@@ -95,7 +102,9 @@ or
         'color': canSave ? 'white' : 'black',
         'fontWeight': canSave ? 'bold' : 'normal'
     }"
-> -->
+>
+
+cleaner solution with specific css classes instead
 <button
     [ngClass]="{
         'can-save': canSave,
@@ -103,3 +112,4 @@ or
       }">
 Save
 </button>
+-->
