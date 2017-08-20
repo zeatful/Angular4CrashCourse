@@ -1,3 +1,4 @@
+import { InputFormatDirective } from './directives/input-format/input-format.directive';
 import { SummaryPipe } from './course/summary.pipe';
 import { AuthorService } from './author/author.service';
 import { CourseService } from './course/course.service';
@@ -20,7 +21,8 @@ import { LikeComponent } from './like/like.component';
     SummaryPipe,
     FavoriteComponent,
     PanelComponent,
-    LikeComponent
+    LikeComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,

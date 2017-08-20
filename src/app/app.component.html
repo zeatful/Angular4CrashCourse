@@ -1,7 +1,11 @@
 
+<!-- When you only have one property, you can bind it as 
+    the property with the name of that directive-->
+<input type="text" [appInputFormat]="'uppercase'">
+
 <!-- safe traversal operation using question mark after potentially 
     null object -->
-<span>{{ task.assignee?.name }}</span>
+<!-- <span>{{ task.assignee?.name }}</span> -->
 
 <!-- <span *ngIf="task.assignee">{{ task.assignee.name }}</span> -->
 
