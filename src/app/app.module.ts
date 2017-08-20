@@ -12,6 +12,7 @@ import { AuthorComponent } from './author/author.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { PanelComponent } from './panel/panel.component';
 import { LikeComponent } from './like/like.component';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LikeComponent } from './like/like.component';
     FavoriteComponent,
     PanelComponent,
     LikeComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
