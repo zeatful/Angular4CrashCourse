@@ -1,0 +1,11 @@
+.can-save {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.can-not-save {
+    background-color: gray;
+    color: black;
+    font-weight: normal;
+}

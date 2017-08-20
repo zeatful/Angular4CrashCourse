@@ -63,19 +63,43 @@
 -->
 
 <!-- * tells angular to use an ng template -->
-<div *ngIf="courses.length > 0; else noCourses">
+<!-- <div *ngIf="courses.length > 0; else noCourses">
     List of courses
 </div>
 <ng-template #noCourses>
     No courses
-</ng-template>
+</ng-template> -->
 
 <!-- how angular actually handles this through property binding -->
-<ng-template [ngIf]="courses.length > 0">
+<!-- <ng-template [ngIf]="courses.length > 0">
     <div>
         List of coures
     </div>
 </ng-template>
 <ng-template [ngIf]="!(courses.length > 0)">
     No courses
-</ng-template>
+</ng-template> -->
+
+<!-- original messy way
+<button
+    [style.backgroundColor]="canSave ? 'blue' : 'gray'"
+    [style.color]="canSave ? 'white' : 'black'"
+    [style.fontWeight]="canSave ? 'bold' : 'normal'"
+>
+
+or
+
+<button
+    [ngStyle]="{
+        'canSave': canSave ? 'blue' : 'gray',
+        'color': canSave ? 'white' : 'black',
+        'fontWeight': canSave ? 'bold' : 'normal'
+    }"
+> -->
+<button
+    [ngClass]="{
+        'can-save': canSave,
+        'can-not-save': !canSave
+      }">
+Save
+</button>
