@@ -1,5 +1,9 @@
+<!-- attribute directive ngClass -->
 <span
   class="glyphicon"
   (click)="onClick()"
-  [ngClass]="[isFavorite ? 'glyphicon-star' : 'glyphicon-star-empty']">
+  [ngClass]="{
+    'glyphicon-star': isFavorite,
+    'glyphicon-star-empty': !isFavorite
+  }">
 </span>
