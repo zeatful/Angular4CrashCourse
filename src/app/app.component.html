@@ -51,10 +51,31 @@
 -->
 
 <!--<button (click)="onAdd()">Add</button>-->
+
+<!--
 <button (click)="loadCourses()">Load Courses</button>
 <ul>
-    <!-- track them by id for performance overhead instead of by memory reference -->
+    <!-- track them by id for performance overhead instead of by memory reference
     <li *ngFor="let course of courses; trackBy: trackCourse">
         {{ course.name }}
     </li>
 </ul>
+-->
+
+<!-- * tells angular to use an ng template -->
+<div *ngIf="courses.length > 0; else noCourses">
+    List of courses
+</div>
+<ng-template #noCourses>
+    No courses
+</ng-template>
+
+<!-- how angular actually handles this -->
+<ng-template [ngIf]="courses.length > 0">
+    <div>
+        List of coures
+    </div>
+</ng-template>
+<ng-template [ngIf]="!(courses.length > 0)">
+    No courses
+</ng-template>
