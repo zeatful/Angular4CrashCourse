@@ -8,11 +8,7 @@ import { FavoriteChangedEventArgs } from "./favorite/favorite.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses = [
-    { id: 1, name: 'course 1'},
-    { id: 2, name: 'course 2'},
-    { id: 3, name: 'course 3'}
-  ];
+  courses;
   viewMode = 'other';
   //courses = [1, 2];
 
@@ -27,6 +23,28 @@ export class AppComponent {
     title: 'Title',
     isFavorite: true
   };
+
+  onAdd() {
+    this.courses.push({ id: 4, name: 'course4'});
+  }
+
+  onChange(course) {
+    course.name = 'UPDATED';
+  }
+
+  // can be costly with a large list
+  // each time these objects are different objecs in memory
+  loadCourses() {
+    this.courses = [
+      { id: 1, name: 'course 1'},
+      { id: 2, name: 'course 2'},
+      { id: 3, name: 'course 3'}
+    ];
+  }
+
+  trackCourse(index, course){
+    return course ? course.id : undefined;
+  }
 
   // define this as an interface
   onFavoriteChanged(eventArgs: FavoriteChangedEventArgs){

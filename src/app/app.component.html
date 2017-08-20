@@ -42,8 +42,19 @@
 </div> -->
 
 <!-- ngForOf (ngFor directive) : index is an exported value we can use -->
+<!--
 <ul>
     <li *ngFor="let course of courses; even as isEven">
         {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+    </li>
+</ul>
+-->
+
+<!--<button (click)="onAdd()">Add</button>-->
+<button (click)="loadCourses()">Load Courses</button>
+<ul>
+    <!-- track them by id for performance overhead instead of by memory reference -->
+    <li *ngFor="let course of courses; trackBy: trackCourse">
+        {{ course.name }}
     </li>
 </ul>
