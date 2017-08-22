@@ -1,22 +1,25 @@
 <!-- angular automatically applies the ngForm directive to the form element if
 ngNoForm or formGroup attributes are not applied to it-->
 <form #f="ngForm" (ngSubmit)="submit(f)">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <!-- adding ngModel tells angular to create a form control object under the hood 
-      angular uses the name attribute to decide which property on the model to set
-    -->
-        <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
+    <!-- nesting a complex object -->
+    <div ngModelGroup="contact" #contact="ngModelGroup">
+        <div *ngIf="!contact.valid">...</div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <!-- adding ngModel tells angular to create a form control object under the hood 
+                  angular uses the name attribute to decide which property on the model to set -->
+            <input required minlength="3" maxlength="10" pattern="banana" ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" id="firstName" type="text" class="form-control">
 
-        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
-            <div *ngIf="firstName.errors.required">
-                First name is required
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+                <div *ngIf="firstName.errors.required">
+                    First name is required
+                </div>
+                <div *ngIf="firstName.errors.minlength">
+                    First name should be a minimum of {{ firstName.errors.minlength.requiredLength}} characters
+                </div>
+                <div *ngIf="firstName.errors.pattern">
+                    Not a banana</div>
             </div>
-            <div *ngIf="firstName.errors.minlength">
-                First name should be a minimum of {{ firstName.errors.minlength.requiredLength}} characters
-            </div>
-            <div *ngIf="firstName.errors.pattern">
-                Not a banana</div>
         </div>
     </div>
     <div class="form-group">
