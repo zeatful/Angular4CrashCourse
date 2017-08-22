@@ -27,5 +27,14 @@ ngNoForm or formGroup attributes are not applied to it-->
         <textarea ngModel name="comment" id="comment" cols="30" rows="10" class="form-control">
     </textarea>
     </div>
+    <div class="checkbox">
+        <label for="">
+            <input type="checkbox" ngModel name="isSubscribed"> Subscribe to mailing list
+        </label>
+    </div>
+    <!-- great diagnostic tool to see backing json of form-->
+    <p>
+        {{ f.value | json }}
+    </p>
     <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
