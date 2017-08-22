@@ -1,4 +1,6 @@
-<form>
+<!-- angular automatically applies the ngForm directive to the form element if
+ngNoForm or formGroup attributes are not applied to it-->
+<form #f="ngForm" (ngSubmit)="submit(f)">
     <div class="form-group">
         <label for="firstName">First Name</label>
         <!-- adding ngModel tells angular to create a form control object under the hood 
