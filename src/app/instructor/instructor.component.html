@@ -1,0 +1,39 @@
+<!-- name with minimum of 3 characters, required -->
+<!-- category dropdown with development, art and languages, required -->
+<!-- checkbox, 30 day money back guarantee -->
+<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input ngModel name="name" id="name" type="text" minlength="3" required #name="ngModel" />
+        <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+            <div *ngIf="name.errors.required">Name is required!</div>
+            <div *ngIf="name.errors.minlength">Name must be at least 3 characters long!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select ngModel name="category" id="category" required class="form-control" #category="ngModel">
+          <option value=""></option>
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category.touched && !category.valid">
+            <div *ngIf="category.errors.required">Name is required!</div>
+        </div>
+    </div>
+    <div class="radio">
+        <label>
+            <input ngModel type="radio" name="isGuaranteed" [value]="true">
+            30 day money back guarantee
+      </label>
+    </div>
+    <!-- great diagnostic tool to see backing json of form-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            ngModel state
+        </div>
+        <div class="panel-body">
+            {{ f.value | json }}
+        </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
