@@ -4,7 +4,7 @@
 <form #f="ngForm" (ngSubmit)="submit(f)">
     <div class="form-group">
         <label for="name">Name</label>
-        <input ngModel name="name" id="name" type="text" minlength="3" required #name="ngModel" />
+        <input class="form-control" ngModel name="name" id="name" type="text" minlength="3" required #name="ngModel" />
         <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
             <div *ngIf="name.errors.required">Name is required!</div>
             <div *ngIf="name.errors.minlength">Name must be at least 3 characters long!</div>
@@ -20,9 +20,9 @@
             <div *ngIf="category.errors.required">Name is required!</div>
         </div>
     </div>
-    <div class="radio">
+    <div class="checkbox">
         <label>
-            <input ngModel type="radio" name="isGuaranteed" [value]="true">
+            <input ngModel type="checkbox" name="isGuaranteed" [value]="true">
             30 day money back guarantee
       </label>
     </div>
