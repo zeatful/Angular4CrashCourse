@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(3), UsernameValidators.cannotContainSpace]),
+    username: new FormControl('', Validators.required, UsernameValidators.shouldBeUnique),
     password: new FormControl('', Validators.required)
     //'user-name': new FormControl() quotes only required when key contains special characters
   });
