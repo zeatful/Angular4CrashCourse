@@ -1,9 +1,10 @@
+import { SignupFormComponent } from './signup-form/signup-form.component';
 import { InputFormatDirective } from './directives/input-format/input-format.directive';
 import { SummaryPipe } from './course/summary.pipe';
 import { AuthorService } from './author/author.service';
 import { CourseService } from './course/course.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -28,11 +29,13 @@ import { InstructorComponent } from './instructor/instructor.component';
     InputFormatDirective,
     ZippyComponent,
     ContactFormComponent,
-    InstructorComponent
+    InstructorComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CourseService,
