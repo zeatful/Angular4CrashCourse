@@ -1,13 +1,12 @@
 <!-- Reactive Forms -->
-<form [formGroup]="form">
+<form [formGroup]="form" ng-submit="login()">
     <div class="form-group">
         <!-- required, minlength, maxlength, patter: are html 5 attributes and are NOT used
         with reactive forms-->
         <label for="username">Username</label>
         <input formControlName="username" id="username" type="text" class="form-control">
         <!-- initially .pending would show checking for uniqueness and never go away,
-        had to use pending === true, however after switching it back the issue is gone.  Not sure why this
-        happens but there appear to be some bugs with it-->
+        had to use pending === true, however after switching it back the issue is gone. -->
         <div *ngIf="username.pending">Checking for uniqueness...</div>
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <p *ngIf="username.errors.required">Username is required.</p>

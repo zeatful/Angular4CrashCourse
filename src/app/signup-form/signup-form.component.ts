@@ -14,6 +14,11 @@ export class SignupFormComponent {
     //'user-name': new FormControl() quotes only required when key contains special characters
   });
 
+  login() {
+    // should call a service to validate login
+    // authService.login(this.form.value);
+  }
+
   get username() {
     return this.form.get('username');
   }
