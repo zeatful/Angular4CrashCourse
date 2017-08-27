@@ -5,6 +5,10 @@
         with reactive forms-->
         <label for="username">Username</label>
         <input formControlName="username" id="username" type="text" class="form-control">
+        <!-- initially .pending would show checking for uniqueness and never go away,
+        had to use pending === true, however after switching it back the issue is gone.  Not sure why this
+        happens but there appear to be some bugs with it-->
+        <div *ngIf="username.pending">Checking for uniqueness...</div>
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <p *ngIf="username.errors.required">Username is required.</p>
             <p *ngIf="username.errors.minlength">Username should be a minimum of {{ username.errors.minlength.requiredLength }} characters</p>
