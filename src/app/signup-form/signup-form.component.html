@@ -1,5 +1,9 @@
 <!-- Reactive Forms -->
-<form [formGroup]="form" ng-submit="login()">
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div *ngIf="form.errors" class="alert alert-danger">
+        The username or password is invalid.
+        <!-- IRL would have individual divs for different errors -->
+    </div>
     <div class="form-group">
         <!-- required, minlength, maxlength, patter: are html 5 attributes and are NOT used
         with reactive forms-->

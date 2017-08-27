@@ -1,3 +1,4 @@
+import { AbstractControl } from '@angular/forms';
 import { UsernameValidators } from './username.validators';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -15,8 +16,18 @@ export class SignupFormComponent {
   });
 
   login() {
-    // should call a service to validate login
-    // authService.login(this.form.value);
+    console.log('login form submitted!');
+    /* should call a service to validate login
+    let isValid = authService.login(this.form.value);
+
+    if (!isValid) {
+    */
+    // add validation errors to the form or a specific form control
+    // this.username.setErrors()
+    this.form.setErrors({
+      invalidLogin: true, // or a complex object
+    });
+    //}
   }
 
   get username() {
