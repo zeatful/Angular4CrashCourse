@@ -4,25 +4,27 @@
         The username or password is invalid.
         <!-- IRL would have individual divs for different errors -->
     </div>
-    <div class="form-group">
-        <!-- required, minlength, maxlength, patter: are html 5 attributes and are NOT used
+    <div formGroupName="account">
+        <div class="form-group">
+            <!-- required, minlength, maxlength, patter: are html 5 attributes and are NOT used
         with reactive forms-->
-        <label for="username">Username</label>
-        <input formControlName="username" id="username" type="text" class="form-control">
-        <!-- initially .pending would show checking for uniqueness and never go away,
+            <label for="username">Username</label>
+            <input formControlName="username" id="username" type="text" class="form-control">
+            <!-- initially .pending would show checking for uniqueness and never go away,
         had to use pending === true, however after switching it back the issue is gone. -->
-        <div *ngIf="username.pending">Checking for uniqueness...</div>
-        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
-            <p *ngIf="username.errors.required">Username is required.</p>
-            <p *ngIf="username.errors.minlength">Username should be a minimum of {{ username.errors.minlength.requiredLength }} characters</p>
-            <p *ngIf="username.errors.cannotContainSpace">Username cannot contain space!</p>
-            <p *ngIf="username.errors.shouldBeUnique">Username is already taken!</p>
+            <div *ngIf="username.pending">Checking for uniqueness...</div>
+            <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                <p *ngIf="username.errors.required">Username is required.</p>
+                <p *ngIf="username.errors.minlength">Username should be a minimum of {{ username.errors.minlength.requiredLength }} characters</p>
+                <p *ngIf="username.errors.cannotContainSpace">Username cannot contain space!</p>
+                <p *ngIf="username.errors.shouldBeUnique">Username is already taken!</p>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input formControlName="password" id="password" type="text" class="form-control">
-        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">Password is required.</div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input formControlName="password" id="password" type="text" class="form-control">
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">Password is required.</div>
+        </div>
     </div>
     <button class="btn btn-primary" type="submit">Sign Up</button>
 </form>
