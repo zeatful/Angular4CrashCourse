@@ -1,11 +1,12 @@
+import { ValidationErrors } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 export class PasswordValidators {
-    static validOldPassword(control: AbstractControl) {
+    static validOldPassword(control: AbstractControl): Promise<ValidationErrors> {
         return new Promise((resolve) => {
-            if (control.value !== '1234') {
+            if (control.value !== '1234')
                 resolve({ invalidOldPassword: true });
-            }
-            resolve(null);
+            else
+                resolve(null);
         });
     }
 
