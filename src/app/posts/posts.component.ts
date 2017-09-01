@@ -28,4 +28,13 @@ export class PostsComponent {
         console.log(response.json());
       });
   }
+
+  // patch vs put, patch updates only a few properties of an object
+  updatePost(post) {
+    // not widely supported, only passes a few properties updated, slightly more performant
+    this.http.patch(this.url + '/' + post.id, JSON.stringify({ isRead: true }))
+      .subscribe(response => {
+        console.log(response.json());
+      });
+  }
 }
