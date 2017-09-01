@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
 
 @Component({
@@ -6,12 +6,25 @@ import { Http } from "@angular/http";
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   posts: any[];
   private url = 'http://jsonplaceholder.typicode.com/posts';
 
-  constructor(private http: Http) {
-    http.get(this.url)
+  /* life cycle hooks in angular:
+    - OnInit
+    - OnChange
+    - DoCheck
+    - AfterContentInit
+    */
+
+  constructor(private http: Http) { }
+
+  /* called by angular when component is initialized, the implements keyword for OnInit is
+    not required to actually invoke ngOnInit(), angular will call them regardless, we did this
+    for compile time checking
+  */
+  ngOnInit() {
+    this.http.get(this.url)
       .subscribe(response => {
         this.posts = response.json();
       });
