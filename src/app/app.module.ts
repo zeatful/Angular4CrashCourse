@@ -1,3 +1,4 @@
+import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { InputFormatDirective } from './directives/input-format/input-format.directive';
 import { SummaryPipe } from './course/summary.pipe';
@@ -47,7 +48,8 @@ import { PostsComponent } from './posts/posts.component';
   ],
   providers: [
     CourseService,
-    AuthorService
+    AuthorService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
