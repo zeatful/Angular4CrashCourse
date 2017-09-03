@@ -1,3 +1,5 @@
+import { ErrorHandler } from '@angular/core';
+import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { InputFormatDirective } from './directives/input-format/input-format.directive';
@@ -49,7 +51,9 @@ import { PostsComponent } from './posts/posts.component';
   providers: [
     CourseService,
     AuthorService,
-    PostService
+    PostService,
+    // tells angular to use our implementation any where ErrorHandler was used
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
