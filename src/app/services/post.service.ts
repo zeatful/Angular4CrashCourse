@@ -33,10 +33,7 @@ export class PostService {
 
   createPost(post) {
     return this.http.post(this.url, JSON.stringify(post))
-      .catch((error: Response) => {
-        return Observable.throw(error.status === 400 ?
-          new BadInputError(error.json()) : new AppError(error.json()));
-      });
+      .catch(this.handleError);
   }
 
   updatePost(id) {
@@ -46,9 +43,14 @@ export class PostService {
 
   deletePost(id) {
     return this.http.delete(this.url + '/' + id)
-      .catch((error: Response) => {
-        return Observable.throw(error.status === 404 ?
-          new NotFoundError() : new AppError(error));
-      });
+      .catch(this.handleError);
+  }
+
+  private handleError(error: Response) {
+    if (error.status === 400) {
+      return Observable.throw(new BadInputError(error.json()));
+    } else if (error.status === 404) {
+      return Observable.throw(new NotFoundError(error.json()));
+    }
   }
 }
