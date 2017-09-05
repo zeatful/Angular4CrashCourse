@@ -19,6 +19,9 @@ export class DataService {
     }
 
     create(resource) {
+        // used to test optimistic updates
+        // return Observable.throw(new AppError());
+
         return this.http.post(this.url, JSON.stringify(resource))
             .map(response => response.json())
             .catch(this.handleError);
@@ -32,6 +35,9 @@ export class DataService {
     }
 
     delete(id) {
+        // used to test optimistic updates
+        // return Observable.throw(new AppError());
+
         return this.http.delete(this.url + '/' + id)
             .map(response => response.json())
             .catch(this.handleError);
