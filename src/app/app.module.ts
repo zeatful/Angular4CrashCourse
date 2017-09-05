@@ -1,3 +1,4 @@
+import { FollowerService } from './services/follower.service';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
@@ -23,6 +24,7 @@ import { InstructorComponent } from './instructor/instructor.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
+import { FollowersComponent } from './followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { PostsComponent } from './posts/posts.component';
     SignupFormComponent,
     NewCourseFormComponent,
     ChangePasswordComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { PostsComponent } from './posts/posts.component';
     CourseService,
     AuthorService,
     PostService,
+    FollowerService,
     // tells angular to use our implementation any where ErrorHandler was used
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
