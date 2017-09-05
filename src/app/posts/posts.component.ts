@@ -61,13 +61,24 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
-    let index = this.posts.indexOf(post);
+    /*
+      Observables vs Promises
+      + Observables
+        - are lazy
+        - nothing happens until they are subscribed
+        - why are observables lazy?
+      + Promises
+        - are eager
+    */
+    this.service.delete(post.id)
+      .subscribe();
 
-    this.service.delete(345)
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+
+    this.service.delete(post.id)
       .subscribe(
-      () => {
-        this.posts.splice(index, 1);
-      },
+      null, // on success don't do anything
       (error: AppError) => {
         this.posts.splice(index, 0, post);
         if (error instanceof NotFoundError) {
