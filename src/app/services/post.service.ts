@@ -28,7 +28,8 @@ export class PostService {
         a users attempts to create an account with a username that already exists
   */
   getPosts() {
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .catch(this.handleError);
   }
 
   createPost(post) {
@@ -39,6 +40,7 @@ export class PostService {
   updatePost(id) {
     // not widely supported, only passes a few properties updated, slightly more performant
     return this.http.patch(this.url + '/' + id, JSON.stringify({ isRead: true }))
+      .catch(this.handleError);
   }
 
   deletePost(id) {
@@ -47,10 +49,12 @@ export class PostService {
   }
 
   private handleError(error: Response) {
-    if (error.status === 400) {
+    if (error.status === 400)
       return Observable.throw(new BadInputError(error.json()));
-    } else if (error.status === 404) {
-      return Observable.throw(new NotFoundError(error.json()));
-    }
+
+    if (error.status === 404)
+      return Observable.throw(new NotFoundError());
+
+    return Observable.throw(new AppError(error));
   }
 }
