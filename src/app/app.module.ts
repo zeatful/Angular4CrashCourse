@@ -1,3 +1,10 @@
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { GithubProfileService } from './services/github-profile.service';
+import { GithubFollowersService } from './services/github-followers.service';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 import { FollowerService } from './services/follower.service';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
@@ -12,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { AuthorComponent } from './author/author.component';
@@ -43,19 +51,34 @@ import { FollowersComponent } from './followers/followers.component';
     NewCourseFormComponent,
     ChangePasswordComponent,
     PostsComponent,
-    FollowersComponent
+    FollowersComponent,
+    GithubFollowersComponent,
+    GithubProfileComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    // order mattersin the RouterModule arrays
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'followers', component: GithubFollowersComponent },
+      { path: 'profile/:username', component: GithubProfileComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: '**', component: NotFoundComponent },// catch any other route and throw an error
+    ])
   ],
   providers: [
     CourseService,
     AuthorService,
     PostService,
     FollowerService,
+    GithubFollowersService,
+    GithubProfileService,
     // tells angular to use our implementation any where ErrorHandler was used
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
