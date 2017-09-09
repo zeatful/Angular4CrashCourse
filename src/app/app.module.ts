@@ -67,7 +67,7 @@ import { FollowersComponent } from './followers/followers.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'followers', component: GithubFollowersComponent },
-      { path: 'profile/:username', component: GithubProfileComponent },
+      { path: 'followers/:id/:username', component: GithubProfileComponent },
       { path: 'posts', component: PostsComponent },
       { path: '**', component: NotFoundComponent },// catch any other route and throw an error
     ])
