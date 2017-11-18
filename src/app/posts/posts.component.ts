@@ -69,9 +69,10 @@ export class PostsComponent implements OnInit {
         - why are observables lazy?
       + Promises
         - are eager
-    */
+    
     this.service.delete(post.id)
       .subscribe();
+      */
 
     let index = this.posts.indexOf(post);
     this.posts.splice(index, 1);
